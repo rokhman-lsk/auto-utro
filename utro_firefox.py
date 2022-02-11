@@ -1,4 +1,3 @@
-import os
 import time
 
 from selenium import webdriver
@@ -6,15 +5,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-from settings import URL, LOGIN, PASSWORD
+from settings import URL, LOGIN, PASSWORD, NUMBER_OF_CONTRACT
 
 
-# URL = os.getenv('URL')
-# LOGIN = os.getenv('LOGIN')
-# PASSWORD = os.getenv('PASSWORD')
-
-
-NUMBER_OF_CONTRACT = os.getenv('NUMBER_OF_CONTRACT')  # Tele2
 DESCRIPTION = 'Документация и написание скриптов для Netbox'
 HOURS = 8
 
