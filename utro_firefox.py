@@ -6,10 +6,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
+from settings import URL, LOGIN, PASSWORD
 
-URL = os.getenv('URL')
-LOGIN = os.getenv('LOGIN')
-PASSWORD = os.getenv('PASSWORD')
+
+# URL = os.getenv('URL')
+# LOGIN = os.getenv('LOGIN')
+# PASSWORD = os.getenv('PASSWORD')
+
 
 NUMBER_OF_CONTRACT = os.getenv('NUMBER_OF_CONTRACT')  # Tele2
 DESCRIPTION = 'Документация и написание скриптов для Netbox'
@@ -54,7 +57,7 @@ driver.find_element(By.XPATH, '//textarea[@placeholder="Введите опис�
 driver.find_element(By.XPATH, '//input[@placeholder="0"]').send_keys(HOURS)
 click(By.XPATH, '//button[text()="Списать трудозатраты"]')
 click(By.XPATH, '//button[text()="Отправить отчет"]')
-time.sleep(5)  # Для того, чтобы убедиться в заполнении
+time.sleep(5)  # Для того чтобы убедиться в заполнении
 # Выход из учетной записи
 click(By.XPATH, '//a[@href="/logout"]')
-print('Отчет по трудозатратам списан')
+print('Отчет по трудозатратам заполнен')
