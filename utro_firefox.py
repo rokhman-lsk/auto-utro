@@ -1,5 +1,7 @@
+import sys
 import time
 
+from selenium import common
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -18,16 +20,20 @@ opts = webdriver.FirefoxOptions()
 opts.headless = False  # Чтобы скрыть - True
 """Инициализация"""
 driver = webdriver.Firefox(options=opts)
-driver.implicitly_wait(15)
+driver.implicitly_wait(7)
 driver.get(URL)
 """Аутентификация"""
 driver.find_element(By.NAME, 'username').send_keys(LOGIN)
 driver.find_element(By.NAME, 'password').send_keys(PASSWORD)
 click(By.XPATH, '//input[@value="Войти"]')
-time.sleep(15)  # Для двухфакторной (чтобы ввести числа), чтобы ее не было, следует подключиться к VPN
+# time.sleep(15)  # Для двухфакторной (чтобы ввести числа), чтобы ее не было, следует подключиться к VPN
 """Заполнение недельного отчета в УТРО"""
 # Получение чисел (даты) понедельника и пятницы
-date = driver.find_element(By.XPATH, '//span[contains(text(), "-")]')
+try:
+    date = driver.find_element(By.XPATH, '//span[contains(text(), "-")]')
+except common.exceptions.NoSuchElementException as e:
+    print('Requires two-factor authentication.\nConnect to VPN or enter numbers manually when trying again ')
+    sys.exit()
 monday_date = int(date.text[0:2])
 friday_date = int(date.text[-5:-3]) - 2
 # Добавление контракта

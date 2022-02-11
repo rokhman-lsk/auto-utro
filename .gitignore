@@ -2,3 +2,4 @@
 .idea/
 venv/
 settings.py
+__pycache__/
