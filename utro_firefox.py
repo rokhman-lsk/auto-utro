@@ -5,11 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-from settings import URL, LOGIN, PASSWORD, NUMBER_OF_CONTRACT
-
-
-DESCRIPTION = 'Документация и написание скриптов для Netbox'
-HOURS = 8
+from settings import URL, LOGIN, PASSWORD, NUMBER_OF_CONTRACT, DESCRIPTION, HOURS
 
 
 def click(by, el):
